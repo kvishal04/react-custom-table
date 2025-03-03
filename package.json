@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "rct-table",
+  "name": "react-custom-table",
   "version": "1.0.0",
   "description": "A custom table component for React",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/vishaljais00/rct-table.git"
+    "url": "https://github.com/kvishal04/react-custom-table.git"
   },
   "keywords": [
     "react",
