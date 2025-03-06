@@ -38,5 +38,8 @@
     "component"
   ],
   "author": "kvishal04",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lucide-react": "^0.477.0"
+  }
 }
