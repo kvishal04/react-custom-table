@@ -1,4 +1,3 @@
-
 import { Triangle } from "lucide-react";
 import React, { useState } from "react";
 import { TableColumn, TableConfig } from "../interface";

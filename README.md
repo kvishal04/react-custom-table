@@ -14,12 +14,12 @@ This React library provides a customizable and responsive table component with b
 ## Installation
 To install the package, run:
 ```sh
-npm install your-library-name
+npm i react-table-pagination-v1
 ```
 
 Or using yarn:
 ```sh
-yarn add your-library-name
+yarn add react-table-pagination-v1
 ```
 
 ---
@@ -28,13 +28,13 @@ yarn add your-library-name
 
 ### Importing Components
 ```tsx
-import { TableComponent, Pagination } from "your-library-name";
+import { TableComponent, Pagination } from "react-table-pagination-v1";
 ```
 
 ### Example Usage
 ```tsx
 import React, { useState } from "react";
-import { TableComponent, Pagination } from "your-library-name";
+import { TableComponent, Pagination } from "react-table-pagination-v1";
 
 const ProductTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
