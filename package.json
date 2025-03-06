@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "react-table-pagination-v1",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A custom table component for React",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
