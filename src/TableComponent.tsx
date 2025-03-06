@@ -1,4 +1,3 @@
-"use client";
 
 import { Triangle } from "lucide-react";
 import React, { useState } from "react";
