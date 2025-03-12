@@ -11,6 +11,13 @@ export type TableColumn = {
 };
 
 
+export interface ToolbarConfig {
+  backgroundColor?: string;
+  textColor?: string;
+  borderColor?: string;
+  hoverBgColor?: string;
+  hoverTextColor?: string;
+}
 
 
 export type TableConfig = {
@@ -23,7 +30,6 @@ export type TableConfig = {
    thClassName: string;
    thIconClassName: string;
    tdClassname: string;
-   showItemQuantity: number;
    columns: TableColumn[];
    rows: {
      className: string;
@@ -31,4 +37,11 @@ export type TableConfig = {
    emptyState: {
      text: () => string;
    };
+   toolbar? : {
+    showToolbar: boolean;
+    onSearch : (query: string , seletedCols:string[]) => void
+    toolbarClass: ToolbarConfig
+  }
+
 };
+

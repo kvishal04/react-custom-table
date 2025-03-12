@@ -1,12 +1,13 @@
 import { Triangle } from "lucide-react";
 import React, { useState } from "react";
 import { TableColumn, TableConfig } from "../interface";
+import Toolbar from "./Toolbar";
 
 
 type TableComponentProps = {
   data: Record<string, any>[];
+  fullData?: Record<string, any>[];
   config: TableConfig;
-  showItemQuantity: number;
   onCellClick?: (cellData: any, row: Record<string, any>) => void;
 };
 
@@ -27,8 +28,8 @@ const CombineIcon: React.FC = () => (
 
 const TableComponent: React.FC<TableComponentProps> = ({
   data,
+  fullData = [],
   config,
-  showItemQuantity,
   onCellClick,
 }) => {
   const [sortConfig, setSortConfig] = useState<{
@@ -84,61 +85,73 @@ const TableComponent: React.FC<TableComponentProps> = ({
 
 
   return (
-    <table className={config.tableClassName}>
-      <thead className={config.tHeadClassName}>
-        <tr>
-          {config.columns.map((col) => (
-            <th
-              key={col.name}
-              className={
-                col.className
-                  ? `${col.className} ${config.thClassName}`
-                  : config.thClassName
-              }
-              onClick={() => col.sortable && handleSort(col.keys[0])}
-            >
-              <div className={config.thIconClassName}>
-                <span>{getSortIcon(col)}</span>
-                <span>{col.name}</span>
-              </div>
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody className={config.tBodyClassName}>
-        {sortedData.length > 0 ? (
-          sortedData.slice(0, showItemQuantity).map((row, index) => (
-            <tr
-              key={row.id || JSON.stringify(row)}
-              className={config.trClassName.class(row)}
+    <div>
+        {config.toolbar && config.toolbar.showToolbar &&
+          <Toolbar
+            toolbarConfig={config.toolbar.toolbarClass}
+            columns={config.columns}
+            onSearch={config.toolbar?.onSearch}
+            data={fullData || []} // Fallback to empty array
+            currentPageData={data || []} // Fallback to empty array
+          />
+        } 
 
-            >
-              {config.columns.map((col) => (
-                <td
-                  key={col.name}
-                  className={`${config.tdClassname ?? ""} ${col.rowclassName ?? ""
-                    }`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onCellClick?.(col.keys[0], row);
-                  }}
-                >
-                  {col.customBodyRender
-                    ? col.customBodyRender(row, index)
-                    : row[col.keys[0]] || config.emptyState.text()}
-                </td>
-              ))}
-            </tr>
-          ))
-        ) : (
+      <table className={config.tableClassName}>
+        <thead className={config.tHeadClassName}>
           <tr>
-            <td colSpan={config.columns.length} className={config.tdClassname}>
-              {config.emptyState.text()}
-            </td>
+            {config.columns.map((col) => (
+              <th
+                key={col.name}
+                className={
+                  col.className
+                    ? `${col.className} ${config.thClassName}`
+                    : config.thClassName
+                }
+                onClick={() => col.sortable && handleSort(col.keys[0])}
+              >
+                <div className={config.thIconClassName}>
+                  <span>{getSortIcon(col)}</span>
+                  <span>{col.name}</span>
+                </div>
+              </th>
+            ))}
           </tr>
-        )}
-      </tbody>
-    </table>
+        </thead>
+        <tbody className={config.tBodyClassName}>
+          {sortedData.length > 0 ? (
+            sortedData.map((row, index) => (
+              <tr
+                key={row.id || JSON.stringify(row)}
+                className={config.trClassName.class(row)}
+
+              >
+                {config.columns.map((col) => (
+                  <td
+                    key={col.name}
+                    className={`${config.tdClassname ?? ""} ${col.rowclassName ?? ""
+                      }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onCellClick?.(col.keys[0], row);
+                    }}
+                  >
+                    {col.customBodyRender
+                      ? col.customBodyRender(row, index)
+                      : row[col.keys[0]] || config.emptyState.text()}
+                  </td>
+                ))}
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={config.columns.length} className={config.tdClassname}>
+                {config.emptyState.text()}
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
