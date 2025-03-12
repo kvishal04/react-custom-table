@@ -1,12 +1,19 @@
 {
-    "compilerOptions": {
-      "module": "ESNext",
-      "moduleResolution": "node",
-      "lib": ["DOM", "ESNext"],
-      "jsx": "react-jsx",
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "strict": true
-    }
-  }
-  
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+
+    // ✅ Generate Type Declarations
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,  
+    "outDir": "dist"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

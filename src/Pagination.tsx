@@ -1,15 +1,8 @@
 import React from "react";
+import { PaginatateProps } from "./interface";
 
-type PaginationProps = {
-  totalItems: number;
-  itemsPerPage: number;
-  currentPage: number;
-  itemsPerPageOptions?: number[];
-  onPageChange: (page: number) => void;
-  onItemsPerPageChange: (items: number) => void;
-};
 
-const Pagination: React.FC<PaginationProps> = ({
+const Pagination: React.FC<PaginatateProps> = ({
   totalItems,
   itemsPerPage,
   currentPage,

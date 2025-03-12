@@ -1,8 +1,8 @@
-import { TableColumn, ToolbarConfig } from "../interface/index";
+import { TableColumn, ToolbarConfig } from "./interface/index";
 import { useState } from "react";
 import { Search, ChevronDown, Download } from "lucide-react";
 import { saveAs } from "file-saver";
-import Papa from "papaparse";
+import * as Papa from "papaparse";
 
 
 

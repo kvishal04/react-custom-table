@@ -43,5 +43,25 @@ export type TableConfig = {
     toolbarClass: ToolbarConfig
   }
 
+
 };
+
+
+export interface PaginatateProps {
+  totalItems: number;
+  itemsPerPage: number;
+  currentPage: number;
+  itemsPerPageOptions?: number[];
+  onPageChange: (page: number) => void;
+  onItemsPerPageChange: (items: number) => void;
+};
+
+
+export interface TableComponentProps  {
+  data: Record<string, any>[];
+  fullData?: Record<string, any>[];
+  config: TableConfig;
+  onCellClick?: (cellData: any, row: Record<string, any>) => void;
+};
+
 

@@ -1,15 +1,8 @@
 import { Triangle } from "lucide-react";
 import React, { useState } from "react";
-import { TableColumn, TableConfig } from "../interface";
+import { TableColumn, TableComponentProps, TableConfig } from "./interface";
 import Toolbar from "./Toolbar";
 
-
-type TableComponentProps = {
-  data: Record<string, any>[];
-  fullData?: Record<string, any>[];
-  config: TableConfig;
-  onCellClick?: (cellData: any, row: Record<string, any>) => void;
-};
 
 
 const DownIcon: React.FC = () => (
