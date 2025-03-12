@@ -7,7 +7,6 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
-
     // ✅ Generate Type Declarations
     "declaration": true,
     "declarationMap": true,

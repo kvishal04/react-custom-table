@@ -4,18 +4,29 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 
-
 export default {
   input: 'src/index.ts',
-  output: {
-    file: 'dist/bundle.js',
-    format: 'cjs', // or 'esm' if you prefer
-    sourcemap: true,
-  },
+  output: [
+    {
+      file: 'dist/index.js',
+      format: 'cjs',
+      sourcemap: true,
+    },
+    {
+      file: 'dist/index.esm.js',
+      format: 'esm',
+      sourcemap: true,
+    }
+  ],
   plugins: [
     resolve(),
     commonjs(),
-    typescript({ tsconfig: './tsconfig.json' }),
+    typescript({
+      tsconfig: './tsconfig.json',
+      declaration: true,
+      declarationDir: "dist",
+      emitDeclarationOnly: true, // Ensures only type declarations are emitted
+    }),
     babel({
       babelHelpers: 'bundled',
       extensions: ['.js', '.jsx', '.ts', '.tsx'],

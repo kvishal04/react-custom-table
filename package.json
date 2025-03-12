@@ -3,9 +3,10 @@
   "name": "react-table-pagination-v1",
   "version": "3.1.1",
   "description": "A custom table component for React",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+
   "scripts": {
     "build": "rollup -c",
     "prepublishOnly": "npm run build",
