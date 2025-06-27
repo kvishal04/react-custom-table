@@ -39,10 +39,13 @@ export type TableConfig = {
    };
    toolbar? : {
     showToolbar: boolean;
-    onSearch : (query: string , seletedCols:string[]) => void
+    onSearch : (query: string , seletedCols:string[][]) => void
     toolbarClass: ToolbarConfig
   }
-
+  sortConfig? : {
+    key: string[] | null,
+    direction: 'asc' | 'desc'
+  }
 
 };
 
@@ -61,7 +64,7 @@ export interface TableComponentProps  {
   data: Record<string, any>[];
   fullData?: Record<string, any>[];
   config: TableConfig;
-  onCellClick?: (cellData: any, row: Record<string, any>) => void;
+  onCellClick?: (cellData: string[], row: Record<string, any>) => void;
 };
 
 
